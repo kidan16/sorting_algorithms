@@ -3,14 +3,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-swap(int *x, int *y)
-/*
+void swap(int *x, int *y);
+/**
+ * swap - swaps two integers.
+ * @x: Pointer to the first integer.
+ * @y: Pointer tothe second integer.
+ * Return: Nothing.
+ */
+void swap(int *x, int *y)
+{
+	int temp = *x;
+
+	x = *y;
+	*y = temp;
+}
+
+/**
  * struct listint_s - Doubly linked list node
- *
  * @n: Integer stored in the node
  * @prev: Pointer to the previous element of the list
  * @next: Pointer to the next element of the list
  */
+
 typedef struct listint_s
 {
 	const int n;
