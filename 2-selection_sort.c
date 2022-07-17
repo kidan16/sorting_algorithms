@@ -24,7 +24,8 @@ void selection_sort(int *array, size_t size)
 			if (array[j] == array[i])
 			{
 				for (m = i + 1; m < j; m++)
-				{	if (array[m] == array[i])
+				{
+					if (array[m] == array[i])
 						continue;
 					else
 					{
