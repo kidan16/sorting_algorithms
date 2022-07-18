@@ -18,22 +18,23 @@ void shell_sort(int *array, size_t size)
 
 	while (gap >= 1)
 	{
-	for (last = gap; gap < size; last++)
-	{
-		for (first = last - gap; first >= 0; last - gap)
+		for (last = gap; gap < size; last++)
 		{
-			if (array[first + gap] > array[first])
+			for (first = last - gap; first >= 0; last - gap)
 			{
-				break;
-			}
-			else
-			{
-				temp = array[first + gap];
-				array[first + gap] = array[first];
-				array[first] = temp;
+				if (array[first + gap] > array[first])
+				{
+					break;
+				}
+				else
+				{
+					temp = array[first + gap];
+					array[first + gap] = array[first];
+					array[first] = temp;
+					print_array(array, size);
+				}
 			}
 		}
-	}
-	gap = (gap - 1) / 3;
+		gap = (gap - 1) / 3;
 	}
 }
