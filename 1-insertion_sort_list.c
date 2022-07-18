@@ -41,8 +41,6 @@ void insertion_sort_list(listint_t **list)
 		{
 			if (reverse->prev->n > reverse->n)
 			{
-				if (reverse == temp)
-					temp = temp->prev;
 				swap(reverse->prev, reverse);
 				if (!reverse->prev)
 					head = reverse;
