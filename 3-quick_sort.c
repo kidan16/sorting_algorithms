@@ -8,8 +8,10 @@
  */
 size_t partition(int *array, size_t start, size_t end)
 {
-	size_t j, temp;
+	size_t j;
+	int temp;
 	size_t partition_index = start;
+	size_t n = sizeof(array) / sizeof(array[0]);
 	int pivot = array[end];
 
 	for (j = start + 1; j < end; j++)
@@ -20,13 +22,13 @@ size_t partition(int *array, size_t start, size_t end)
 			array[j] = array[partition_index];
 			array[partition_index] = temp;
 			partition_index++;
-			print_array(array, sizeof(array) / sizeof(array[0]));
+			print_array(array, n)
 		}
 
 		temp = array[partition_index];
 		array[partition_index] = pivot;
 		pivot = temp;
-		print_array(array, sizeof(array) / sizeof(array[0]));
+		print_array(array, n);
 	}
 	return (partition_index);
 }
@@ -41,7 +43,7 @@ void sort(int *array, size_t start, size_t end)
 {
 	if (start > end)
 	{
-		int partition_index = partition(array, start, end);
+		size_t partition_index = partition(array, start, end);
 
 		sort(array, start, partition_index);
 		sort(array, partition_index, end);
