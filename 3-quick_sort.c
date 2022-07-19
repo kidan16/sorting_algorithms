@@ -48,7 +48,7 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
  *
  * Return: void
  */
-void sort(int *array, size_t start, size_t end, size_t size)
+void sort_parts(int *array, size_t start, size_t end, size_t size)
 {
 	size_t part;
 
@@ -56,8 +56,8 @@ void sort(int *array, size_t start, size_t end, size_t size)
 	{
 		part = partition(array, start, end, size);
 		
-		sort(array, start, partition_index - 1, size);
-		sort(array, partition_index + 1, end, size);
+		sort_parts(array, start, partition_index - 1, size);
+		sort_parts(array, partition_index + 1, end, size);
 	}
 }
 
