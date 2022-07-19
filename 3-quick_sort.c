@@ -12,7 +12,7 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
 	size_t j;
 	int temp;
 	size_t partition_index;
-	int pivot = array[end];
+	int pivot;
 
 	pivot = array[end];
 	partition_index = start - 1;
