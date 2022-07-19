@@ -4,6 +4,7 @@
  * @a: the first node
  * @b: the 2nd node
  */
+
 void swap(listint_t *a, listint_t *b)
 {
 	if (a->prev)
@@ -14,36 +15,36 @@ void swap(listint_t *a, listint_t *b)
 	b->prev = a->prev;
 	a->prev = b;
 	b->next = a;
+
 }
 
 /**
- * insertion_sort_list - sorts a doubly linkded list
+ * insertion_sort_list - sorts a doubly linkded list of integers in ascending
  * @list: the list to be sorted
  */
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *reverse, *temp;
+	listint_t *i, *j;
 
 	if (!list || !*list || !(*list)->next)
 		return;
-
-	temp = (*list)->next;
-	while (temp)
+	i = (*list)->next;
+	while (i)
 	{
-		reverse = temp;
-		while (reverse->prev)
+		j = i;
+		while (j && j->prev)
 		{
-			if (reverse->prev->n > reverse->n)
+			if (j->prev->n > j->n)
 			{
-				swap(reverse->prev, reverse);
-				if (!reverse->prev)
-					*list = reverse;
+				swap(j->prev, j);
+				if (!j->prev)
+					*list = j;
 				print_list((const listint_t *)*list);
 			}
 			else
-				reverse = reverse->prev;
+				j = j->prev;
 		}
-		temp = temp->next;
+		i = i->next;
 	}
 }
