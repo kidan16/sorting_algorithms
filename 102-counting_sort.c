@@ -49,7 +49,7 @@ void counting_sort(int *array, size_t size)
 	for (j = 0; j < size; j++)
 		array[j] = array_copy[j];
 
-	print_array(array, size);
+	print_array(sort, k + 1);
 	free(sort);
 	free(array_copy);
 }
