@@ -28,6 +28,8 @@ void shell_sort(int *array, size_t size)
 					array[x] = array[x - gap];
 					array[x - gap] = temp;
 				}
+				else
+					break;
 			}
 		}
 		print_array(array, size);

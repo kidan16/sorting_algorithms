@@ -1,43 +1,85 @@
 #include "sort.h"
+#include <stdio.h>
 
 /**
- * bubble_sort - Sorts an array of integers in ascending order
- * @array: An array of integers to be sorted.
- * @size: Size of the array.
+ * swap - swaps a node with the next node in the list
+ * @list: double pointer to the beginning of the list
+ * @node: node to swap
+ *
  * Return: void
  */
-void bubble_sort(int *array, size_t size)
+void swap(listint_t **list, listint_t *node)
 {
-	size_t i, j, z, temp;
+	node->next->prev = node->prev;
+	if (node->prev)
+		node->prev->next = node->next;
+	else
+		*list = node->next;
+	node->prev = node->next;
+	node->next = node->next->next;
+	node->prev->next = node;
+	if (node->next)
+		node->next->prev = node;
+}
 
-	if (!array || size < 2)
+/**
+ * cocktail_sort_list - sorts a doubly linked list of integers in ascending
+ * order using the Cocktail shaker sort algorithm
+ * @list: Double pointer to the head of the doubly linked list
+ *
+ * Return: void
+ */
+void cocktail_sort_list(listint_t **list)
+{
+	char swapped = 1;
+	size_t x = 0, n = 0, size = 1;
+	listint_t *temp, *tmp;
+
+	if (list == NULL || *list == NULL)
 		return;
-	for (i = 0; i < size - 1; i++)
+
+	tmp = *list;
+	while (tmp)
 	{
-		for (j = 0; j < (size - 1 - i); j++)
+		size++;
+		tmp = tmp->next;
+	}
+
+	temp = *list;
+	while (swapped != 0)
+	{
+		swapped = 0;
+		while (temp->next != NULL || x <= size - n - 1)
 		{
-			if (array[j] > array[j + 1])
-			{
-				temp = array[j];
-				array[j] = array[j + 1];
-				array[j + 1] = temp;
 
-				print_array(array, size);
+
+			if (temp->next->n < temp->n)
+			{
+				swap(list, temp);
+				swapped = 1;
+				print_list(*list);
 			}
+			else
+				temp = temp->next;
+			x++;
 		}
-		for (z = j - 1; z > 0; z--)
+		if (swapped == 0)
+			break;
+		x = 0;
+		swapped = 0;
+		while (temp->prev != NULL || x <= size - n - 2)
 		{
-			if (array[z] < array[z - 1])
+			if (temp->prev->n > temp->n)
 			{
-				temp = array[z];
-				array[z] = array[z - 1];
-				array[z - 1] = temp;
-
-				print_array(array, size);
+				swap(list, temp->prev);
+				swapped = 1;
+				print_list(*list);
 			}
-
+			else
+				temp = temp->prev;
+			x++;
 		}
-		
-	
+		x = 0;
+		n = n + 2;
 	}
 }
