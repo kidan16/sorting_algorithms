@@ -35,7 +35,7 @@ void counting_sort(int *array, size_t size)
 	for (j = 0; j < k + 1; j++)
 		sort[j] += sort[j + 1];
 
-	array_copy = malloc(sizeof(array));
+	array_copy = malloc(sizeof(int) * size);
 	if (!array_copy)
 	{
 		free(sort);
