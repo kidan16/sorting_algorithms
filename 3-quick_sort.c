@@ -11,21 +11,21 @@
  */
 size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 {
-	ssize_t j, partition_index;
+	ssize_t j, x;
 	int temp, pivot;
 
 	pivot = array[end];
-	partition_index = start - 1;
+	x = start - 1;
 
 	for (j = start; j < end; j++)
 	{
 		if (array[j] < pivot)
 		{
-			partition_index++;
-			if (partition_index != j)
+			x++;
+			if (x != j)
 			{
-				temp = array[partition_index];
-				array[partition_index] = array[j];
+				temp = array[x];
+				array[x] = array[j];
 				array[j] = temp;
 				print_array(array, size);
 			}
@@ -33,12 +33,12 @@ size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 	}
 	if (pivot < array[partition_index + 1])
 	{
-		temp = array[partition_index + 1];
-		array[partition_index + 1] = pivot;
+		temp = array[x + 1];
+		array[x + 1] = pivot;
 		pivot = temp;
 		print_array(array, size);
 	}
-	return (partition_index + 1);
+	return (x + 1);
 }
 /**
  * sort_parts - sorts a partition of an array of integers
