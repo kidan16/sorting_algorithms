@@ -7,7 +7,7 @@
  *
  * Return: void
  */
-void counting_sort(int * array, size_t size) 
+void counting_sort(int *array, size_t size) 
 {
 	int j, k;
 	int * sort, * array_copy;
@@ -19,7 +19,7 @@ void counting_sort(int * array, size_t size)
 	for (j = 0; j < size; j++) 
 	{
 		if (array[j] > k)
-			k = array[j];
+		k = array[j];
 	}
 	
 	sort = malloc(sizeof(int) * (k + 1));
@@ -34,10 +34,13 @@ void counting_sort(int * array, size_t size)
 
 	for (j = 0; j < k + 1; j++)
 		sort[j] += sort[j + 1];
-	
+
 	array_copy = malloc(sizeof(array));
 	if (!array_copy)
+	{
+		free(sort);
 		return;
+	}
 	for (j = 0; j < size; j++)
 		array_copy[j] = array[j];
 	for (j = 0; j < size; j++)
