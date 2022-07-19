@@ -50,7 +50,7 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
  */
 void sort(int *array, size_t start, size_t end, size_t size)
 {
-	ssize_t part;
+	size_t part;
 
 	if (start < end)
 	{
