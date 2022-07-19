@@ -31,7 +31,7 @@ size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 			}
 		}
 	}
-	if (pivot < array[partition_index + 1])
+	if (pivot < array[x + 1])
 	{
 		temp = array[x + 1];
 		array[x + 1] = pivot;
