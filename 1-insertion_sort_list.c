@@ -25,18 +25,14 @@ void insertion_sort_list(listint_t **list)
 {
 	listint_t *reverse, *temp, *head;
 
-	if (!list)
+	if (!list || !*list || !(*list)->next)
 		return;
-
 	head = *list;
-	if (!head || !head->next)
-		return;
-
 	temp = head->next;
 	while (temp)
 	{
 		reverse = temp;
-		while (temp && reverse->prev)
+		while (reverse->prev)
 		{
 			if (reverse->prev->n > reverse->n)
 			{
