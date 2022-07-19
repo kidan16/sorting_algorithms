@@ -40,7 +40,7 @@ size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 	return (partition_index + 1);
 }
 /**
- * sort - sorts a partition of an array of integers
+ * sort_parts - sorts a partition of an array of integers
  * @array: array to sort
  * @start: lowest index of the partition to sort
  * @end: highest index of the partition to sort
@@ -55,7 +55,7 @@ void sort_parts(int *array, ssize_t start, ssize_t end, size_t size)
 	if (start < end)
 	{
 		part = partition(array, start, end, size);
-		
+
 		sort_parts(array, start, part - 1, size);
 		sort_parts(array, part + 1, end, size);
 	}
