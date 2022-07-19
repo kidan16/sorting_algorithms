@@ -17,8 +17,8 @@ void swap(listint_t *a, listint_t *b)
 }
 
 /**
- * insertion_sort_list - sorts a doubly linkded list.
- * @list: the list to be sorted.
+ * insertion_sort_list - sorts a doubly linkded list
+ * @list: the list to be sorted
  */
 
 void insertion_sort_list(listint_t **list)
@@ -27,19 +27,19 @@ void insertion_sort_list(listint_t **list)
 
 	if (!list || !*list || !(*list)->next)
 		return;
-	head = *list;
-	temp = head->next;
+
+	temp = (*list)->next;
 	while (temp)
 	{
 		reverse = temp;
-		while (reverse && reverse->prev)
+		while (reverse->prev)
 		{
 			if (reverse->prev->n > reverse->n)
 			{
 				swap(reverse->prev, reverse);
 				if (!reverse->prev)
-					head = reverse;
-				print_list((const listint_t *)head);
+					*list = reverse;
+				print_list((const listint_t *)*list);
 			}
 			else
 				reverse = reverse->prev;
