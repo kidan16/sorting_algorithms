@@ -41,7 +41,7 @@ size_t partition(int *array, size_t start, size_t end)
  */
 void sort(int *array, size_t start, size_t end)
 {
-	if (start > end)
+	if (start < end)
 	{
 		size_t partition_index = partition(array, start, end);
 
