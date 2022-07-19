@@ -26,14 +26,14 @@ void counting_sort(int *array, size_t size)
 	if (!sort)
 		return;
 
-	for (j = 0; j < (k + 1); j++)
+	for (j = 0; j < k + 1; j++)
 		sort[j] = 0;
 
-	for (j = 0; j < size; j++)
+	for (j = 0; j < k + 1; j++)
 		sort[array[j]]++;
 
 	for (j = 0; j < k + 1; j++)
-		sort[j] += sort[j + 1];
+		sort[j] += sort[j - 1];
 
 	array_copy = malloc(sizeof(int) * size);
 	if (!array_copy)
@@ -45,10 +45,10 @@ void counting_sort(int *array, size_t size)
 		array_copy[j] = array[j];
 	for (j = 0; j < size; j++)
 		array_copy[--sort[array[j]]] = array[j];
-	
+
 	for (j = 0; j < size; j++)
 		array[j] = array_copy[j];
-	
+
 	print_array(array, size);
 	free(sort);
 	free(array_copy);
