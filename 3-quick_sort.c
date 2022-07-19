@@ -8,9 +8,9 @@
  *
  * Return: index of the partition
  */
-size_t partition(int *array, size_t start, size_t end, size_t size)
+size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 {
-	size_t j, partition_index;
+	ssize_t j, partition_index;
 	int temp, pivot;
 
 	pivot = array[end];
@@ -48,9 +48,9 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
  *
  * Return: void
  */
-void sort_parts(int *array, size_t start, size_t end, size_t size)
+void sort_parts(int *array, ssize_t start, ssize_t end, size_t size)
 {
-	size_t part;
+	ssize_t part;
 
 	if (start < end)
 	{
