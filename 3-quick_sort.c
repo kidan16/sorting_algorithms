@@ -56,8 +56,8 @@ void sort_parts(int *array, ssize_t start, ssize_t end, size_t size)
 	{
 		part = partition(array, start, end, size);
 		
-		sort_parts(array, start, partition_index - 1, size);
-		sort_parts(array, partition_index + 1, end, size);
+		sort_parts(array, start, part - 1, size);
+		sort_parts(array, part + 1, end, size);
 	}
 }
 
