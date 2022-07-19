@@ -26,7 +26,7 @@ size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 				temp = array[j];
 				array[j] = array[partition_index];
 				array[partition_index] = temp;
-				print_array(array, size)
+				print_array(array, size);
 			}
 		}
 	}
@@ -73,5 +73,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (!array || size < 2)
 		return;
-	sort(array, 0, size - 1, size);
+	sort_parts(array, 0, size - 1, size);
 }
