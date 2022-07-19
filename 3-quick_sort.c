@@ -4,15 +4,15 @@
  * @array: array to sort
  * @start: lowest index of the partition to sort
  * @end: highest index of the partition to sort
+ * @size: size
  * Return: index of the partition
  */
-size_t partition(int *array, size_t start, size_t end)
+size_t partition(int *array, size_t start, size_t end, size_t size)
 {
 	size_t j;
 	int temp;
 	size_t partition_index = start;
 	int pivot = array[end];
-	size_t n = sizeof(array) / sizeof(array[0]);
 
 	for (j = start + 1; j < end; j++)
 	{
@@ -22,14 +22,14 @@ size_t partition(int *array, size_t start, size_t end)
 			array[j] = array[partition_index];
 			array[partition_index] = temp;
 			partition_index++;
-			print_array(array, n)
+			print_array(array, size)
 		}
 	}
 
 	temp = array[partition_index];
 	array[partition_index] = pivot;
 	pivot = temp;
-	print_array(array, n);
+	print_array(array, size);
 	return (partition_index);
 }
 /**
@@ -37,16 +37,17 @@ size_t partition(int *array, size_t start, size_t end)
  * @array: array to sort
  * @start: lowest index of the partition
  * @end: highest index of the partition
+ * @size: size
  * Return: void
  */
-void sort(int *array, size_t start, size_t end)
+void sort(int *array, size_t start, size_t end, size_t size)
 {
 	if (start < end)
 	{
-		size_t partition_index = partition(array, start, end);
+		size_t partition_index = partition(array, start, end, size);
 
-		sort(array, start, partition_index - 1);
-		sort(array, partition_index + 1, end);
+		sort(array, start, partition_index - 1, size);
+		sort(array, partition_index + 1, end, size);
 	}
 }
 
@@ -59,5 +60,5 @@ void quick_sort(int *array, size_t size)
 {
 	if (!array || size < 2)
 		return;
-	sort(array, 0, size - 1);
+	sort(array, 0, size - 1, size);
 }
