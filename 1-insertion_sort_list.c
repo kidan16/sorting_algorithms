@@ -23,7 +23,7 @@ void swap(listint_t *a, listint_t *b)
 
 void insertion_sort_list(listint_t **list)
 {
-	listint_t *reverse, *a, *b, *temp, *head;
+	listint_t *reverse, *temp, *head;
 
 	if (!list)
 		return;
@@ -36,7 +36,6 @@ void insertion_sort_list(listint_t **list)
 	while (temp)
 	{
 		reverse = temp;
-		temp = temp->next;
 		while (reverse->prev)
 		{
 			if (reverse->prev->n > reverse->n)
@@ -49,5 +48,6 @@ void insertion_sort_list(listint_t **list)
 			else
 				reverse = reverse->prev;
 		}
+		temp = temp->next;
 	}
 }
