@@ -24,15 +24,14 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
 				temp = array[j];
 				array[j] = array[partition_index];
 				array[partition_index] = temp;
-				partition_index++;
 				print_array(array, size)
 			}
 		}
 	}
 	if (pivot < array[partition_index + 1])
 	{
-		temp = array[partition_index];
-		array[partition_index] = pivot;
+		temp = array[partition_index + 1];
+		array[partition_index + 1] = pivot;
 		pivot = temp;
 		print_array(array, size);
 	}
@@ -48,9 +47,10 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
  */
 void sort(int *array, size_t start, size_t end, size_t size)
 {
+	ssize_t partition_index;
 	if (start < end)
 	{
-		size_t partition_index = partition(array, start, end, size);
+		partition_index = partition(array, start, end, size);
 
 		sort(array, start, partition_index - 1, size);
 		sort(array, partition_index + 1, end, size);
