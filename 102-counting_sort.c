@@ -10,7 +10,7 @@
 void counting_sort(int *array, size_t size) 
 {
 	int j, k;
-	int * sort, * array_copy;
+	int *sort, *array_copy;
 	
 	if (!array || size < 2)
 		return;
