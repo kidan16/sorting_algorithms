@@ -45,7 +45,7 @@ void sort(int *array, size_t start, size_t end)
 	{
 		size_t partition_index = partition(array, start, end);
 
-		sort(array, start, partition_index);
+		sort(array, start, partition_index - 1);
 		sort(array, partition_index + 1, end);
 	}
 }
