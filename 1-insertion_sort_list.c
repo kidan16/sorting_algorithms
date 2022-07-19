@@ -38,7 +38,7 @@ void insertion_sort_list(listint_t **list)
 				b->next = a;
 				if (!reverse->prev)
 					head = reverse;
-				print_list(head);
+				print_list((const listint_t *)head);
 			}
 			reverse = reverse->prev;
 		}
