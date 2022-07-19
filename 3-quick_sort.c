@@ -1,10 +1,11 @@
 #include "sort.h"
 /**
- * partition - finds the partitions for the quicksort using the Lomuto scheme
+ * partition - finds the partition for the quicksort using the Lomuto scheme
  * @array: array to sort
  * @start: lowest index of the partition to sort
  * @end: highest index of the partition to sort
- * @size: size
+ * @size: size of the array
+ *
  * Return: index of the partition
  */
 size_t partition(int *array, size_t start, size_t end, size_t size)
@@ -39,11 +40,12 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
 	return (partition_index + 1);
 }
 /**
- * sort - sorts a partition of an array of integers.
+ * sort - sorts a partition of an array of integers
  * @array: array to sort
- * @start: lowest index of the partition
- * @end: highest index of the partition
- * @size: size
+ * @start: lowest index of the partition to sort
+ * @end: highest index of the partition to sort
+ * @size: size of the array
+ *
  * Return: void
  */
 void sort(int *array, size_t start, size_t end, size_t size)
@@ -53,16 +55,19 @@ void sort(int *array, size_t start, size_t end, size_t size)
 	if (start < end)
 	{
 		part = partition(array, start, end, size);
-
+		
 		sort(array, start, partition_index - 1, size);
 		sort(array, partition_index + 1, end, size);
 	}
 }
 
 /**
- * quick_sort -Sort an array using quick_sort algorithm
- * @array: array
- * @size: size
+ * quick_sort - sorts an array of integers in ascending order using the
+ * Quick sort algorithm
+ * @array: The array to sort
+ * @size: The size of the array
+ *
+ * Return: void
  */
 void quick_sort(int *array, size_t size)
 {
