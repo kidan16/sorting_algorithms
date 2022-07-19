@@ -3,21 +3,21 @@
 /**
  * partition - finds the partition for the quicksort using the Lomuto scheme
  * @array: array to sort
- * @start: lowest index of the partition to sort
- * @end: highest index of the partition to sort
+ * @st: lowest index of the partition to sort
+ * @en: highest index of the partition to sort
  * @size: size of the array
  *
  * Return: index of the partition
  */
-size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
+size_t partition(int *array, ssize_t st, ssize_t en, size_t size)
 {
 	ssize_t j, x;
 	int temp, pivot;
 
-	pivot = array[end];
-	x = start - 1;
+	pivot = array[en];
+	x = st - 1;
 
-	for (j = start; j < end; j++)
+	for (j = st; j < en; j++)
 	{
 		if (array[j] < pivot)
 		{
@@ -31,7 +31,7 @@ size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 			}
 		}
 	}
-	if (array[end] < array[x + 1])
+	if (array[en] < array[x + 1])
 	{
 		temp = array[x + 1];
 		array[x + 1] = pivot;
@@ -43,22 +43,22 @@ size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 /**
  * sort_parts - sorts a partition of an array of integers
  * @array: array to sort
- * @start: lowest index of the partition to sort
- * @end: highest index of the partition to sort
+ * @st: lowest index of the partition to sort
+ * @en: highest index of the partition to sort
  * @size: size of the array
  *
  * Return: void
  */
-void sort_parts(int *array, ssize_t start, ssize_t end, size_t size)
+void sort_parts(int *array, ssize_t st, ssize_t en, size_t size)
 {
 	ssize_t part;
 
-	if (start < end)
+	if (st < en)
 	{
-		part = partition(array, start, end, size);
+		part = partition(array, st, en, size);
 
-		sort_parts(array, start, part - 1, size);
-		sort_parts(array, part + 1, end, size);
+		sort_parts(array, st, part - 1, size);
+		sort_parts(array, part + 1, en, size);
 	}
 }
 
