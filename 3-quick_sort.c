@@ -25,11 +25,13 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
 			print_array(array, size)
 		}
 	}
-
-	temp = array[partition_index];
-	array[partition_index] = pivot;
-	pivot = temp;
-	print_array(array, size);
+	if (pivot < array[partition_index])
+	{
+		temp = array[partition_index];
+		array[partition_index] = pivot;
+		pivot = temp;
+		print_array(array, size);
+	}
 	return (partition_index);
 }
 /**
