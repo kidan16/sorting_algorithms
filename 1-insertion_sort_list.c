@@ -32,7 +32,7 @@ void insertion_sort_list(listint_t **list)
 	while (temp)
 	{
 		reverse = temp;
-		while (reverse->prev)
+		while (reverse && reverse->prev)
 		{
 			if (reverse->prev->n > reverse->n)
 			{
