@@ -48,10 +48,11 @@ size_t partition(int *array, size_t start, size_t end, size_t size)
  */
 void sort(int *array, size_t start, size_t end, size_t size)
 {
-	ssize_t partition_index;
+	ssize_t part;
+
 	if (start < end)
 	{
-		partition_index = partition(array, start, end, size);
+		part = partition(array, start, end, size);
 
 		sort(array, start, partition_index - 1, size);
 		sort(array, partition_index + 1, end, size);
