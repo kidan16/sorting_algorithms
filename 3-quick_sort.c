@@ -24,9 +24,9 @@ size_t partition(int *array, ssize_t start, ssize_t end, size_t size)
 			partition_index++;
 			if (partition_index != j)
 			{
-				temp = array[j];
-				array[j] = array[partition_index];
-				array[partition_index] = temp;
+				temp = array[partition_index];
+				array[partition_index] = array[j];
+				array[j] = temp;
 				print_array(array, size);
 			}
 		}
